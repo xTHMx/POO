@@ -7,8 +7,11 @@ public class DisplayBanco {
     Scanner scan = new Scanner(System.in);
 
     public void initBanco() throws FileNotFoundException{
-        File banco = new File("banco.txt");
+        File banco = new File("ProjetoBanco/Projeto/src/banco.txt");
+        //System.out.println(banco.getAbsolutePath()); //debug
         Scanner scanBanco = new Scanner(banco);
+
+        
 
         String lin = scanBanco.nextLine();
         String[] campos = lin.split("#");
@@ -18,8 +21,9 @@ public class DisplayBanco {
         myBank.setCnpj(campos[2]);
         myBank.setEndereco(campos[3]);
 
-
         scanBanco.close();
+
+        //System.out.println(myBank.getEndereco());
 
     }
 
