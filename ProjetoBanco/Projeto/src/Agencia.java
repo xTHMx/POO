@@ -62,10 +62,26 @@ public class Agencia {
     }
 
     /**
+     * 
+     * @param numeroAgencia Novo numero da agencia
+     */
+    public void setNumeroAgencia(int numeroAgencia){
+        this.numeroAgencia = numeroAgencia;
+    }
+
+    /**
      * @return Devolve o endereco da Agencia
      */
     public String getEndereco(){
         return endereco;
+    }
+
+    /**
+     * 
+     * @param endereco Endereço a ser alterado
+     */
+    public void setEndereco(String endereco){
+        this.endereco = endereco;
     }
 
 }
