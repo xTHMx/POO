@@ -8,6 +8,11 @@ public class Banco {
     private Conta contaLogada = null;;
     private ArrayList<Agencia> agencias = new ArrayList<Agencia>();
 
+    /**
+     * 
+     * @param codigo Numero para buscar a agencia
+     * @return  Retorna a agencia
+     */
     public Agencia buscarAgencia(int codigo){
         int i;
         Agencia temp;
@@ -20,28 +25,59 @@ public class Banco {
         return null; //nao encontrei
     }
 
+    /**
+     * 
+     * @param numAgencia Numero da Agencia da conta
+     * @param numConta Numero da Conta
+     * @param senha Senha da conta
+     */
     public void logarCliente(int numAgencia, int numConta, String senha){
         Agencia temp = buscarAgencia(numAgencia);
-        Conta temp2 = temp.buscarConta(numConta, senha);
-        if(temp2 == null){
-            System.out.println("Conta não encontrada");
+        Conta temp2;
+
+        if(temp != null){
+            temp2 = temp.buscarConta(numConta, senha);
+
+            if(temp2 == null){
+                System.out.println("Conta não encontrada");
+            }else{
+                contaLogada = temp2;
+            }
         }else{
-            contaLogada = temp2;
+            System.out.println("Agencia não encontrada");
         }
     }
 
+    /**
+     * 
+     * @param valor Valor a sacar
+     */
     public void realizarSaque(double valor){
         contaLogada.sacar(valor);
     }
 
+    /**
+     * 
+     * @param valor Valor a depositar
+     */
     public void realizarDeposito(double valor){
         contaLogada.depositar(valor);
     }
 
+    /**
+     * 
+     * @return Saldo da conta Atual
+     */
     public double saldo(){
         return contaLogada.getSaldo();
     }
 
+    /**
+     * 
+     * @param codigo Codigo da nova agencia
+     * @param nome Nome da nova agencia
+     * @param endereco Endereço da nova agencia
+     */
     public void cadastrarAgencia(int codigo, String nome, String endereco){
         Agencia novo = new Agencia();
         novo.setNumeroAgencia(codigo);
@@ -50,10 +86,25 @@ public class Banco {
         agencias.add(novo);
     }
 
-    public void cadastrarAgencia(Agencia ag){
-        agencias.add(ag);
+    /**
+     * 
+     * @param agencia Instancia da agencia a ser cadastrada
+     */
+    public void cadastrarAgencia(Agencia agencia){
+        agencias.add(agencia);
     }
 
+    /**
+     * 
+     * @param nome Nome da nova conta
+     * @param dataNascimento Data de Nascimento da nova conta
+     * @param endereco Endereço da nova conta
+     * @param CPF CPF da nova conta
+     * @param saldo Saldo da nova conta
+     * @param senha Senha da nova conta
+     * @param numeroConta Numero da nova conta
+     * @param agencia Agencia da nova conta
+     */
     public void cadastrarConta(String nome, String dataNascimento,String endereco,String CPF, double saldo,String senha,int numeroConta,int agencia){
         Conta novo = new Conta();
         Agencia ag = buscarAgencia(agencia);
@@ -70,12 +121,18 @@ public class Banco {
         
     }
 
-    public void transferencia(Agencia ag, int numConta, double valor){
+    /**
+     * 
+     * @param agencia Agencia da conta que receberá o valor
+     * @param numConta Numero da conta que receberá o valor
+     * @param valor Valor a ser transferido
+     */
+    public void transferencia(Agencia agencia, int numConta, double valor){
         Conta c;
         int i;
 
-        for(i=0; i < ag.contas.size(); i++){
-            c = ag.contas.get(i);
+        for(i=0; i < agencia.contas.size(); i++){
+            c = agencia.contas.get(i);
             if(c.getNumeroConta() == numConta){
                 c.depositar(valor);
                 contaLogada.sacar(valor);
@@ -83,7 +140,11 @@ public class Banco {
         }
     }
 
-
+    /**
+     * 
+     * @param CPF Chave Cpf do pix
+     * @param valor Valor a ser transferido
+     */
     public void PIX(String CPF, double valor){
         int i, j;
         Agencia ag;
@@ -100,6 +161,9 @@ public class Banco {
         }
     }
 
+    /**
+     * Desloga do Banco
+     */
     public void deslogar(){
         contaLogada = null;
     }
@@ -145,9 +209,9 @@ public class Banco {
     
     /**
      * 
-     * @param numeroConta Novo valor do numero do banco
+     * @param numero Novo valor do numero do banco
      */
-    public void setNumeroConta(int numero){
+    public void setNumero(int numero){
         this.numero = numero;
     }
 
