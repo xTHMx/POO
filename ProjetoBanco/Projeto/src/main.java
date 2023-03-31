@@ -1,6 +1,7 @@
-public class main {
+public class Main {
 
     public static void main(String[] args) throws Exception {
-        Banco myBank = new Banco();
+        DisplayBanco displayBanco = new DisplayBanco();
+        displayBanco.login();
     }
 }

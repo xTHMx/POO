@@ -116,6 +116,14 @@ public class Conta {
     public int getNumeroConta() {
         return numeroConta;
     }
+    
+    /**
+     * 
+     * @param numeroConta Novo valor do numero da conta
+     */
+    public void setNumeroConta(int numeroConta){
+        this.numeroConta = numeroConta;
+    }
 
     /**
      * 
@@ -137,7 +145,7 @@ public class Conta {
      * 
      * @param valor Valor a ser inserido na conta
      */
-    public void deposito (double valor){
+    public void depositar (double valor){
         this.setSaldo(this.saldo + valor);
     }
     
