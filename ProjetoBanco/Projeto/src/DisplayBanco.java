@@ -11,8 +11,6 @@ public class DisplayBanco {
         //System.out.println(banco.getAbsolutePath()); //debug
         Scanner scanBanco = new Scanner(banco);
 
-        
-
         String lin = scanBanco.nextLine();
         String[] campos = lin.split("#");
 

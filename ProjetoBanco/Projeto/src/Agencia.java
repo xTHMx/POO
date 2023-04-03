@@ -3,7 +3,10 @@
  *
  * @author tulio.henry
  */
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Agencia {
 
@@ -11,6 +14,37 @@ public class Agencia {
     private String endereco;
     private int numeroAgencia;
     public ArrayList<Conta> contas = new ArrayList<Conta>();
+
+    /**
+     * Funçao que cria e adiciona as contas ao ArrayList
+     * @throws FileNotFoundException
+     */
+    public void initContas() throws FileNotFoundException{
+        File ag = new File("ProjetoBanco/Projeto/src/conta.txt");
+        Scanner scanConta = new Scanner(ag);
+        String[] campos;
+        String lin;
+        int i = 0;
+        
+        while(scanConta.hasNextLine()){
+            lin = scanConta.nextLine();
+            campos = lin.split("#");
+            
+            if(Integer.parseInt(campos[5]) == numeroAgencia){ //verifica se aquela conta pertence a essa agencia
+                contas.add(new Conta(campos[0],campos[1],campos[2],campos[3],Double.parseDouble(campos[4]),
+                                        Integer.parseInt(campos[5]),Integer.parseInt(campos[6]),campos[7]));
+            }
+            
+        }
+
+        scanConta.close();
+    }
+
+    public Agencia(String nome, int numAgencia, String endereco){
+        this.nome = nome;
+        this.numeroAgencia = numAgencia;
+        this.endereco = endereco;
+    }
 
 
     /**

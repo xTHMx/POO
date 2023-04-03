@@ -1,4 +1,8 @@
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Banco {
     private String nome;
@@ -7,6 +11,23 @@ public class Banco {
     private String endereco;
     private Conta contaLogada = null;;
     private ArrayList<Agencia> agencias = new ArrayList<Agencia>();
+
+    public void initAgencia() throws FileNotFoundException{
+        File ag = new File("ProjetoBanco/Projeto/src/agencia.txt");
+        Scanner scanAgencia = new Scanner(ag);
+        String[] campos;
+        String lin;
+        
+        while(scanAgencia.hasNextLine()){
+            lin = scanAgencia.nextLine();
+            campos = lin.split("#");
+
+            agencias.add(new Agencia(campos[0], Integer.parseInt(campos[1]), campos[2]));
+            
+        }
+
+        scanAgencia.close();
+    }
 
     /**
      * 
@@ -79,10 +100,7 @@ public class Banco {
      * @param endereco Endereço da nova agencia
      */
     public void cadastrarAgencia(int codigo, String nome, String endereco){
-        Agencia novo = new Agencia();
-        novo.setNumeroAgencia(codigo);
-        novo.setNome(nome);
-        novo.setEndereco(endereco);
+        Agencia novo = new Agencia(nome,codigo,endereco);
         agencias.add(novo);
     }
 
@@ -102,21 +120,12 @@ public class Banco {
      * @param CPF CPF da nova conta
      * @param saldo Saldo da nova conta
      * @param senha Senha da nova conta
-     * @param numeroConta Numero da nova conta
+     * @param numConta Numero da nova conta
      * @param agencia Agencia da nova conta
      */
-    public void cadastrarConta(String nome, String dataNascimento,String endereco,String CPF, double saldo,String senha,int numeroConta,int agencia){
-        Conta novo = new Conta();
+    public void cadastrarConta(String nome, String dataNascimento, String endereco, String CPF, double saldo, int agencia, int numConta, String senha){
+        Conta novo = new Conta(nome,dataNascimento,endereco,CPF,saldo,agencia,numConta,senha);
         Agencia ag = buscarAgencia(agencia);
-        novo.setNome(nome);
-        novo.setDataNascimento(dataNascimento);
-        novo.setEndereco(endereco);
-        novo.setCPF(CPF);
-        novo.setSaldo(saldo);
-        novo.setSenha(senha);
-        novo.setNumeroConta(numeroConta);
-        novo.setAgencia(agencia);
-
         ag.CadastrarConta(novo);
         
     }

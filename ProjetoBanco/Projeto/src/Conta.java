@@ -14,6 +14,17 @@ public class Conta {
     private int numeroConta;
     private int agencia;
 
+    public Conta(String nome, String dataNascimento, String endereco, String CPF, double saldo, int agencia, int numConta, String senha){
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.endereco = endereco;
+        this.CPF = CPF;
+        this.saldo = saldo;
+        this.agencia = agencia;
+        this.numeroConta = numConta;
+        this.senha = senha;
+    }
+
     /**
      * 
      * @return Endereço da conta
