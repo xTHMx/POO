@@ -14,6 +14,17 @@ public class Conta {
     private int numeroConta;
     private int agencia;
 
+    /**
+     * Cria uma instancia da classe Conta
+     * @param nome Nome da conta
+     * @param dataNascimento Data de Nacimento do cliente da conta
+     * @param endereco Endereço da conta
+     * @param CPF CPF da conta
+     * @param saldo Saldo da conta
+     * @param agencia Agencia da conta
+     * @param numConta Numero da conta
+     * @param senha Senha da conta
+     */
     public Conta(String nome, String dataNascimento, String endereco, String CPF, double saldo, int agencia, int numConta, String senha){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -26,7 +37,7 @@ public class Conta {
     }
 
     /**
-     * 
+     * Retorna o endereço da conta
      * @return Endereço da conta
      */
     public String getEndereco() {
@@ -34,6 +45,7 @@ public class Conta {
     }
 
     /**
+     * Define o endereco da conta
      * @param endereco Novo endereço a ser trocado
      */
     public void setEndereco(String endereco) {
@@ -41,31 +53,31 @@ public class Conta {
     }
 
     /**
-     * 
-     * @return Retorna a Data do Nascimento 
+     * Retorna a Data de Nascimento da conta
+     * @return Data do Nascimento 
      */
     public String getDataNascimento() {
         return dataNascimento;
     }
 
     /**
-     * 
-     * @param dataNascimento Novo valor para trocar a data
+     * Define a Data de Nascimento da conta
+     * @param dataNascimento Data para trocar
      */
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
     /**
-     * 
-     * @return Retorna a senha da conta
+     * Retorna a Senha da conta
+     * @return Senha da conta
      */
     public String getSenha() {
         return senha;
     }
 
     /**
-     * 
+     * Define a senha da conta
      * @param senha Nova senha a ser trocada
      */
     public void setSenha(String senha) {
@@ -73,15 +85,15 @@ public class Conta {
     }   
     
     /**
-     * 
-     * @return Retorna o nome da conta
+     * Retorna o nome da conta
+     * @return Nome da conta
      */
     public String getNome() {
         return nome;
     }
     
     /**
-     * 
+     * Define o nome da conta
      * @param nome Novo nome a ser trocado
      */
     public void setNome(String nome) {
@@ -89,15 +101,15 @@ public class Conta {
     }
 
     /**
-     * 
-     * @return Retorna o valor do CPF da conta
+     * Retorna o valor do CPF da conta
+     * @return CPF da conta
      */
     public String getCPF() {
         return CPF;
     }
 
     /**
-     * 
+     * Define o CPF da conta
      * @param CPF Novo valor a ser trocado
      */
     public void setCPF(String CPF) {
@@ -105,15 +117,15 @@ public class Conta {
     }
 
     /**
-     * 
-     * @return Retorna o saldo da conta
+     * Retorna o saldo da conta
+     * @return Saldo da conta
      */
     public double getSaldo() {
         return saldo;
     }
 
     /**
-     * 
+     * Define o saldo da conta
      * @param saldo Novo saldo a ser trocado
      */
     public void setSaldo(double saldo) {
@@ -121,15 +133,15 @@ public class Conta {
     }
 
     /**
-     * 
-     * @return Retorna o n° da conta
+     * Retorna o numero da conta
+     * @return Numero da conta
      */
     public int getNumeroConta() {
         return numeroConta;
     }
     
     /**
-     * 
+     * Define o numero da conta
      * @param numeroConta Novo valor do numero da conta
      */
     public void setNumeroConta(int numeroConta){
@@ -137,15 +149,15 @@ public class Conta {
     }
 
     /**
-     * 
-     * @return Retorna a agencia da conta
+     * Retorna a agencia da conta
+     * @return Agencia da conta
      */
     public int getAgencia() {
         return agencia;
     }
 
     /**
-     * 
+     * Define a agencia da conta
      * @param agencia Nova agencia a ser trocada
      */
     public void setAgencia(int agencia) {
@@ -153,7 +165,7 @@ public class Conta {
     }
     
     /**
-     * 
+     * Insere o valor definido na conta
      * @param valor Valor a ser inserido na conta
      */
     public void depositar (double valor){
@@ -161,7 +173,7 @@ public class Conta {
     }
     
     /**
-     * 
+     * Remove o valor definido da conta
      * @param value Valor a ser retirado da conta
      */
     public void sacar(double value){
@@ -169,7 +181,7 @@ public class Conta {
     }
 
     /**
-     * 
+     * Verifica se a senha é verdadeira
      * @param senha Senha a ser validada
      * @return Verdadeiro se senhas são iguais
      */

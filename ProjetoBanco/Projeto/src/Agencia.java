@@ -19,12 +19,10 @@ public class Agencia {
      * Funçao que cria e adiciona as contas ao ArrayList
      * @throws FileNotFoundException
      */
-    public void initContas() throws FileNotFoundException{
-        File ag = new File("ProjetoBanco/Projeto/src/conta.txt");
-        Scanner scanConta = new Scanner(ag);
+    public void initContas(File fileConta) throws FileNotFoundException{
+        Scanner scanConta = new Scanner(fileConta);
         String[] campos;
         String lin;
-        int i = 0;
         
         while(scanConta.hasNextLine()){
             lin = scanConta.nextLine();
@@ -40,6 +38,12 @@ public class Agencia {
         scanConta.close();
     }
 
+    /**
+     * Cria um objeto Agencia
+     * @param nome Nome da agencia
+     * @param numAgencia Numero da Agencia
+     * @param endereco Endereco da Agencia
+     */
     public Agencia(String nome, int numAgencia, String endereco){
         this.nome = nome;
         this.numeroAgencia = numAgencia;
@@ -48,6 +52,7 @@ public class Agencia {
 
 
     /**
+     * Cadastra uma conta
      * @param conta Conta a ser cadastrada
      */
     public void CadastrarConta(Conta conta){
@@ -55,6 +60,7 @@ public class Agencia {
     };
 
     /**
+     * Busca uma conta a partir de seu numero e senha
      * @param numConta Conta a ser procurada
      * @param senha Senha da conta para verificaçao
      * @return Instacia da conta
@@ -65,7 +71,7 @@ public class Agencia {
         for(i = 0; i < contas.size(); i++){
             temp = contas.get(i);
             if(temp.getNumeroConta() == numConta){
-                if(temp.getSenha() == senha){
+                if(temp.getSenha().equals(senha)){ //por algum motivo usar (str' == str) nao funciona
                     return temp;
                 }
             }
@@ -75,6 +81,7 @@ public class Agencia {
 
 
     /**
+     * Retorna o nome da Agencia
      * @return retorna o nome
      */
     public String getNome() {
@@ -82,21 +89,23 @@ public class Agencia {
     }
 
     /**
-     * @param nome Troca o nome da instancia
+     * Define o nome da Agencia
+     * @param nome Nome da instancia
      */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     /**
-     * @return Devolve o numero da Agencia
+     * Retorna o numero da Agencia
+     * @return Numero da Agencia
      */
     public int getNumeroAgencia() {
         return numeroAgencia;
     }
 
     /**
-     * 
+     * Define o numero da Agencia
      * @param numeroAgencia Novo numero da agencia
      */
     public void setNumeroAgencia(int numeroAgencia){
@@ -104,15 +113,16 @@ public class Agencia {
     }
 
     /**
-     * @return Devolve o endereco da Agencia
+     * Retorna o endereco da Agencia
+     * @return Endereco da Agencia
      */
     public String getEndereco(){
         return endereco;
     }
 
     /**
-     * 
-     * @param endereco Endereço a ser alterado
+     * Define o endereco da Agencia
+     * @param endereco Endereço da Agencia
      */
     public void setEndereco(String endereco){
         this.endereco = endereco;
