@@ -39,7 +39,8 @@ public class Livro {
         for(i = 0; i < capitulos.size(); i++){
             cap = capitulos.get(i);
             System.out.println("Capitulo:" +  cap.getTitulo() +
-                                "\nN° de Paginas: " + cap.getNumPaginas() + " Autor: "+ cap.getSobrenome());
+                                "\nN° de Paginas: " + cap.getNumPaginas() + " Autor: "+ cap.getSobrenome()+
+                                "\n---------------------------");
         }
     }
 
