@@ -151,15 +151,16 @@ public class Banco {
      */
     public void transferencia(Agencia agencia, int numConta, double valor){
         Conta c;
-        int i;
 
-        for(i=0; i < agencia.contas.size(); i++){
-            c = agencia.contas.get(i);
-            if(c.getNumeroConta() == numConta){
-                c.depositar(valor);
-                contaLogada.sacar(valor);
-            }
+        c = agencia.buscarConta(numConta);
+
+        if(c != null && c.getNumeroConta() == numConta){
+            c.depositar(valor);
+            contaLogada.sacar(valor);
+        }else{
+            System.out.println("Conta não encontrada!");
         }
+
     }
 
     /**
@@ -168,19 +169,21 @@ public class Banco {
      * @param valor Valor a ser transferido
      */
     public void PIX(String CPF, double valor){
-        int i, j;
+        int i;
         Agencia ag;
         Conta c;
 
         for(i = 0; i < agencias.size(); i++){
             ag = agencias.get(i);
-            for(j=0; j < ag.contas.size(); j++ ){
-                c = ag.contas.get(j);
-                if(c.getCPF().equals(CPF)){
-                    contaLogada.sacar(valor);
-                    c.depositar(valor);
-                }
+
+            c = ag.buscarConta(CPF);
+
+            if(c != null && c.getCPF().equals(CPF)){
+                contaLogada.sacar(valor);
+                c.depositar(valor);
+                System.out.println("CPF");
             }
+
         }
     }
 

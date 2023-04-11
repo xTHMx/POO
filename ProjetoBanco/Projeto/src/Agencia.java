@@ -13,7 +13,7 @@ public class Agencia {
     private String nome;
     private String endereco;
     private int numeroAgencia;
-    public ArrayList<Conta> contas = new ArrayList<Conta>();
+    private ArrayList<Conta> contas = new ArrayList<Conta>();
 
     /**
      * Funçao que cria e adiciona as contas ao ArrayList
@@ -77,6 +77,50 @@ public class Agencia {
             }
         }
         return null;
+    }
+
+    /**
+     * Busca conta a partir do numero
+     * @param numConta Numero da Conta
+     * @return Instancia da conta
+     */
+    public Conta buscarConta(int numConta){
+        int i;
+        Conta temp;
+        for(i = 0; i < contas.size(); i++){
+            temp = contas.get(i);
+            if(temp.getNumeroConta() == numConta){
+                return temp;
+
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Busca Conta por CPF
+     * @param cpf Cpf da conta
+     * @return Instacia da conta
+     */
+    public Conta buscarConta(String cpf){
+        int i;
+        Conta temp;
+        
+        for(i = 0; i < contas.size(); i++){
+            temp = contas.get(i);
+            if(temp.getCPF().equals(cpf)){
+                return temp;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Retorna o tamanho da lista da conta
+     * @return Tamnho da lista
+     */
+    public int getContasListSize(){
+        return contas.size();
     }
 
 
