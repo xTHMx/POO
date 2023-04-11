@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Livro {
     private String editor;
     private String titulo;
@@ -27,7 +28,19 @@ public class Livro {
     }
 
     public void printInfo(){
+        int i;
+        Capitulo cap;
 
+        System.out.println("Titulo: "+ titulo +
+                            "\nEditor: "+ editor + " Ediçao: " + edicao +
+                            "\nPreço: R$"+ preco +
+                            "\n================================");        
+        
+        for(i = 0; i < capitulos.size(); i++){
+            cap = capitulos.get(i);
+            System.out.println("Capitulo:" +  cap.getTitulo() +
+                                "\nN° de Paginas: " + cap.getNumPaginas() + " Autor: "+ cap.getSobrenome());
+        }
     }
 
     public String getEditor(){

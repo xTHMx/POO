@@ -7,5 +7,7 @@ public class Main {
 
         livro.addCapitulo(cap1);
         livro.addCapitulo(cap2);
+
+        livro.printInfo();
     }
 }
