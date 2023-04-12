@@ -24,5 +24,19 @@ public class Main {
         Fracao.multFracao(fra,fra2);
         Fracao.divFracao(fra,fra2);
 
+        //Matrizes
+        double[][] mat1 = {{1,2,3},{1,2,3},{1,2,3}};
+        double[][] mat2 = {{2,2,2},{1,1,1},{3,3,3}};
+        double[][] mat3;
+
+        int[][] mat4 = {{1,2,3},{1,2,3},{1,2,3}};
+        int[][] mat5 = {{2,2,2},{1,1,1},{3,3,3}};
+        int[][] mat6;
+
+        mat3 = Matriz.somaMatriz(mat1,mat2);
+        Matriz.printMatriz(mat3);
+        mat6 = Matriz.somaMatriz(mat4,mat5);
+        Matriz.printMatriz(mat6);
+
     }
 }
