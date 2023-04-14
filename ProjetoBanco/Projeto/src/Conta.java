@@ -1,6 +1,7 @@
+import java.util.List;
+import java.util.ArrayList;
 
 /**
- *
  * @author tulio.henry
  */
 public class Conta {
@@ -13,6 +14,7 @@ public class Conta {
     private String senha;
     private int numeroConta;
     private int agencia;
+    private List<Extrato> extratos = new ArrayList<>();
 
     /**
      * Cria uma instancia da classe Conta
@@ -188,5 +190,26 @@ public class Conta {
     public boolean validarSenha(String senha){
         if(this.senha == senha) return true;
         return false;
+    }
+
+    /**
+     * Adiciona o extrato a conta
+     * @param extrato Extrato da transferencia
+     */
+    public void addExtrato(Extrato extrato){
+        extratos.add(extrato);
+    }
+
+    /**
+     * Printa os extratos das transferencias
+     */
+    public void printExtatos(){
+        int i;
+        Extrato temp;
+
+        for(i = 0; i < extratos.size(); i++){
+            temp = extratos.get(i);
+            temp.printExtrato();
+        }
     }
 }

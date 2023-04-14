@@ -87,7 +87,11 @@ public class Banco {
      * @param valor Valor a sacar
      */
     public void realizarSaque(double valor){
+        Extrato ex;
+        
+        ex = new Extrato(contaLogada, -valor, "Saque");
         contaLogada.sacar(valor);
+        contaLogada.addExtrato(ex);
     }
 
     /**
@@ -95,7 +99,11 @@ public class Banco {
      * @param valor Valor a depositar
      */
     public void realizarDeposito(double valor){
+        Extrato ex; 
+
+        ex = new Extrato(contaLogada, valor, "Deposito");
         contaLogada.depositar(valor);
+        contaLogada.addExtrato(ex);
     }
 
     /**
@@ -151,12 +159,17 @@ public class Banco {
      */
     public void transferencia(Agencia agencia, int numConta, double valor){
         Conta c;
+        Extrato ex;
 
         c = agencia.buscarConta(numConta);
 
         if(c != null && c.getNumeroConta() == numConta){
             c.depositar(valor);
             contaLogada.sacar(valor);
+            ex = new Extrato(c, contaLogada, -valor, "Transferencia");
+            contaLogada.addExtrato(ex);
+            c.addExtrato(ex);
+
         }else{
             System.out.println("Conta não encontrada!");
         }
@@ -172,6 +185,7 @@ public class Banco {
         int i;
         Agencia ag;
         Conta c;
+        Extrato ex;
 
         for(i = 0; i < agencias.size(); i++){
             ag = agencias.get(i);
@@ -181,10 +195,25 @@ public class Banco {
             if(c != null && c.getCPF().equals(CPF)){
                 contaLogada.sacar(valor);
                 c.depositar(valor);
-                System.out.println("CPF");
+
+                ex = new Extrato(c, contaLogada, -valor, "Pix");
+                c.addExtrato(ex);
+                contaLogada.addExtrato(ex);
+                c.addExtrato(ex);
+
+                //System.out.println("CPF");
+            }else{
+                System.out.println("Conta não encontrada!");
             }
 
         }
+    }
+
+    /**
+     * Printa os extratos das contas
+     */
+    public void printExtrato(){
+        contaLogada.printExtatos();
     }
 
     /**

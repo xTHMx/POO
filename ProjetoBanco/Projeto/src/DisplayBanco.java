@@ -72,7 +72,8 @@ public class DisplayBanco {
                                     "3 - Saque \n" + 
                                     "4 - Transferencia \n" +
                                     "5 - PIX\n" +
-                                    "6 - Sair\n");
+                                    "6 - Extrato\n" +
+                                    "7 - Sair\n");
 
             opcao = scan.nextInt();
 
@@ -82,7 +83,8 @@ public class DisplayBanco {
                 case 3: operacaoSaque(); break;
                 case 4: operacaoTransferencia(); break;
                 case 5: operacaoPix(); break;
-                case 6: sair = true; operacaoSair(); break;
+                case 6: operacaoExtrato(); break;
+                case 7: sair = true; operacaoSair(); break;
                 default:
                     System.out.println("Erro: Selecione uma opcao existente!");
                     break;
@@ -172,6 +174,11 @@ public class DisplayBanco {
      */
     private void operacaoSaldo(){
         System.out.println("Seu saldo é de $"+myBank.saldo());
+    }
+
+    private void operacaoExtrato(){
+        System.out.println("Seu Extrato:\n");
+        myBank.printExtrato();
     }
 
     /**
