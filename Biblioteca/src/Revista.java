@@ -14,6 +14,15 @@ public class Revista extends Item{
         this.numero = numero;
     }
 
+    @Override
+    public void getDados(){
+        System.out.println("\n==== Dados da Revista ====");
+        super.getDados();
+        System.out.println("Volume: " + volume +
+                            "\nNumero: " + numero);
+
+    }
+
     public int getVolume() {
         return volume;
     }

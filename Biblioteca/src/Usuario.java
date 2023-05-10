@@ -19,7 +19,24 @@ public abstract class Usuario {
     }
     
     public abstract float calcularMulta(Emprestimo emprestimo);
+
+    public void addEmprestimo(Item item, String dataEmprestimo, String dataDevolucaoPrevista){
+        emprestimos.add(new Emprestimo(item, dataEmprestimo, dataDevolucaoPrevista));
+    }
     
+    public Emprestimo buscarEmprestimo(String nome){
+        int i = 0;
+
+        while(i < emprestimos.size()-1 && !nome.equals(emprestimos.get(i).getItem().getTitulo()))
+            i++;
+        
+        if(nome.equals(emprestimos.get(i).getItem().getTitulo())){
+            return emprestimos.get(i);
+        }else{
+           System.out.println("Não foi possivel encontrar emprestimo");
+           return null;
+        }
+    }
     
     public String getNome() {
         return nome;

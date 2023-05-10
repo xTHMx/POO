@@ -14,6 +14,15 @@ public class Livro extends Item{
         this.isbn = isbn;
     }
 
+    @Override
+    public void getDados(){
+        System.out.println("\n==== Dados do Livro ====");
+        super.getDados();
+        System.out.println("Editora: " + editora +
+                            "\nIsbn: " + isbn);
+
+    }
+
     public String getEditora() {
         return editora;
     }

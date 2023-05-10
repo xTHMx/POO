@@ -15,6 +15,15 @@ public class CD extends Item {
         this.gravadora = gravadora;
     }
 
+    @Override
+    public void getDados(){
+        System.out.println("\n==== Dados do CD ====");
+        super.getDados();
+        System.out.println("Volume: " + volume +
+                            "\nGravadora: " + gravadora);
+
+    }
+
     public int getVolume() {
         return volume;
     }

@@ -18,7 +18,14 @@ public abstract class Item implements Emprestavel{
         this.quantDisponivel = quantDisponivel;
         this.quantEmprestada = quantEmprestada;
     }
-    
+
+    public void getDados(){
+        System.out.println("Titulo: " + getTitulo() +
+                            "\nAutor: " + getAutor() +
+                            "\nAno: " + getAnoPublicacao() +
+                            "\nQuantidade Disponivel: " + getQuantDisponivel() +
+                            "\nQuantidade Emprestada: " + getQuantEmprestada());
+    }
     
 
     public String getTitulo() {
@@ -63,12 +70,14 @@ public abstract class Item implements Emprestavel{
 
     @Override
     public void emprestimo() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        quantDisponivel--;
+        quantEmprestada++;
     }
 
     @Override
     public void devolucao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        quantDisponivel++;
+        quantEmprestada--;
     }
     
     

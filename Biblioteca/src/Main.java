@@ -1,4 +1,3 @@
-import java.io.FileReader;
 
 /**
  *
@@ -14,6 +13,7 @@ public class Main {
         String userPath = "Biblioteca/src/users.txt";
 
         Biblioteca biblioteca = new Biblioteca(itemPath,userPath);
+        biblioteca.display();
     }
     
 }
