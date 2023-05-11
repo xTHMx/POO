@@ -5,15 +5,13 @@
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        String itemPath = "Biblioteca/src/items.txt";
+        String itemPath = "Biblioteca/src/items.txt"; //caminhos dos arquivos
         String userPath = "Biblioteca/src/users.txt";
 
-        Biblioteca biblioteca = new Biblioteca(itemPath,userPath);
-        biblioteca.display();
+        Biblioteca biblioteca = new Biblioteca(itemPath,userPath); //biblioteca criada e ja com arquivos carregados
+
+        biblioteca.display(); //processo padra com menu
     }
     
 }
